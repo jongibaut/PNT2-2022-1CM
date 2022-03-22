@@ -12,7 +12,24 @@ const usuarios = [
 ];
 
 
+const frutas = ["anana", "granada", "durazno"];
+//sort me ordena el array o por numeros o por letras
+frutas.sort();
+console.log(frutas);
 
+//filter filtra y me devuelve un array con los items encontrados
+const frutaFiltrada = frutas.filter(fruta => fruta.length >= 6);
+console.log(frutaFiltrada);
+
+const nums = [10, 8, 7];
+
+//map recorre el array y me devuelve una variable y la mete dentro de un array nuevo
+const mult = nums.map(num => num*2);
+console.log(mult);
+
+//reduce reduce el array a un valor
+const promedio = (nums.reduce((valPrevio, valActual) => valPrevio + valActual, 0))/nums.length;
+console.log(promedio);
 
 const login = () => {
     console.log("se ejecuta login");
