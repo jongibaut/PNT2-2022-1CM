@@ -1,10 +1,11 @@
 
-
-const start = async () => {
+let pages = null;
+const start = async (url = 'https://rickandmortyapi.com/api/character') => {
     try{
-    const response = await fetch('https://rickandmortyapi.com/api/character');
+    const response = await fetch(url);
     const {info, results} = await response.json();
-    console.log(results);
+    pages = {next : info.next, prev : info.prev}
+    document.getElementById("cards").innerHTML = '';
     results.forEach((character) => {
         const card = `
             <div class = "col-4 mt-4">
@@ -19,11 +20,21 @@ const start = async () => {
             </div>
             </div>`;
         document.getElementById('cards').insertAdjacentHTML('beforeend', card);
-    })
+    });
+    document.getElementById('prev').disabled = !pages.prev;
+    document.getElementById('next').disabled = !pages.next;
     }
     catch(err){
         console.error(err);
     }
+}
+
+const prev = () => {
+   start(pages.prev);
+}
+
+const next = () => {
+    start(pages.next);
 }
 
 
