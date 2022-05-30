@@ -4,7 +4,7 @@ import About from "../components/About.vue";
 import Unauth from "../components/401.vue";
 
 const logged = () => {
-    if (localStorage.logged === 0) {
+    if (localStorage.logged === 0 || !localStorage.logged) {
         return { path: '/401', name: '401', component: Unauth }
     }
 }
