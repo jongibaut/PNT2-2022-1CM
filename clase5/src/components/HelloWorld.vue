@@ -155,6 +155,8 @@ export default {
   created() {
     //se ejecuta cuando se crea el componente
     this.loadCharacters();
+    localStorage.logged = 0;
+    console.log("local", localStorage.logged);
   },
 };
 </script>
